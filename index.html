@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Converter</title>
+    <style>
+      input{
+        width: 150px;
+      }
+      select{
+        width: 70px;
+      }
+
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+  	<h2 align ="center">Data Units Conversion</h2>
+  	<div class="form-group col-md-3">
+
+  		<input type="text"  id="number" onkeyup="ConverterUnits()">
+      <select class="mdb-select md-form" id = "Units"  onclick="ConverterUnits()">
+        <option value="1" selected>b</option>
+        <option value="2">Byte</option>
+        <option value="3">Kb</option>
+        <option value="4">Mb</option>
+        <option value="5">Gb</option>
+        <option value="6">TB</option>
+      </select>
+      <label for="usr">to</label>
+  		<input type="text"  id="result" onkeyup="ConverterUnits()" disabled>
+      <select class="mdb-select md-form" id = "Units-second" onclick="ConverterUnits()">
+        <option value="1">b</option>
+        <option value="2" selected>Byte</option>
+        <option value="3">Kb</option>
+        <option value="4">Mb</option>
+        <option value="5">Gb</option>
+        <option value="6">TB</option>
+      </select>
+  	</div>
+
+  	<script>
+  		require('./render.js');
+  		function ConverterUnits(){
+  			let number = document.getElementById('number').value;
+        let value = document.getElementById('Units').value;
+        let value_second = document.getElementById('Units-second').value;
+        if(value == value_second) {
+          document.getElementById('result').value = number;
+        }
+        else {
+          switch (value) {
+            //bit
+            case "1":
+              switch (value_second) {
+                //to Byte
+                case "2":
+                  document.getElementById('result').value = number / 8;
+                  break;
+                //to Kb
+                case "3":
+                  document.getElementById('result').value = number / 8000;
+                  break;
+                //to Mb
+                case "4":
+                  document.getElementById('result').value = number / 8000000;
+                 break;
+                 // to Gb
+                 case "5":
+                   document.getElementById('result').value = number / 8000000000;
+                   break;
+                //to Tb
+                case "6":
+                  document.getElementById('result').value = number / 8000000000000;
+                  break;
+                default:
+                  break;
+              }
+              break
+            //Byte
+            case "2":
+              switch (value_second) {
+                  case "1":
+                    document.getElementById('result').value = number * 8; // bit
+                    break;
+                  case "3":
+                    document.getElementById('result').value = number / 1000; //kb
+                    break;
+                  case "4":
+                    document.getElementById('result').value = number / 1000000; //mb
+                    break;
+                  case "5":
+                    document.getElementById('result').value = number / 1000000000; //gb
+                    break;
+                  case "6":
+                    document.getElementById('result').value = number / 1000000000000; //Tb
+                    break;
+                default:
+                  break;
+              }
+              break;
+            //Kb
+            case "3":
+              switch (value_second) {
+                case "1":
+                  document.getElementById('result').value = number * 8000;
+                  break;
+                case "2":
+                  document.getElementById('result').value = number * 1000;
+                  break;
+                case "4":
+                  document.getElementById('result').value = number / 1000;
+                  break;
+                case "5":
+                  document.getElementById('result').value = number / 1000000;
+                case "6":
+                  document.getElementById('result').value = number / 1000000000;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            //Mb
+            case "4":
+              switch (value_second) {
+                case "1":
+                  document.getElementById('result').value = number * 8000000;
+                  break;
+                case "2":
+                  document.getElementById('result').value = number * 1000000;
+                  break;
+                case "3":
+                  document.getElementById('result').value = number * 1000;
+                  break;
+                case "5":
+                  document.getElementById('result').value = number / 1000;
+                  break;
+                case "6":
+                  document.getElementById('result').value = number / 1000000;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            //Gb
+            case "5":
+              switch (value_second) {
+                case "1":
+                  document.getElementById('result').value = number * 8000000000;
+                  break;
+                case "2":
+                  document.getElementById('result').value = number * 1000000000;
+                  break
+                case "3":
+                  document.getElementById('result').value = number * 1000000;
+                  break;
+                case "4":
+                  document.getElementById('result').value = number * 1000;
+                  break;
+                case "6":
+                  document.getElementById('result').value = number / 1000;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            //Tb
+            case "6":
+              switch (value_second) {
+                //to bits
+                case "1":
+                  document.getElementById('result').value = number * 8000000000000;
+                  break;
+                //to Byte
+                case "2":
+                  document.getElementById('result').value = number * 1000000000000;
+                  break;
+                //to Kb
+                case "3":
+                  document.getElementById('result').value = number * 1000000000;
+                  break;
+                //to  Mb
+                case "4":
+                  document.getElementById('result').value = number * 1000000;
+                  break;
+                //to Gb
+                case "5":
+                  document.getElementById('result').value = number * 1000;
+                  break;
+                default:
+                  break;
+              }
+              break;
+            default:
+              break;
+          }
+        }
+  		}
+  	</script>
+
+
+
+  </body>
+  </html>
+</html>
